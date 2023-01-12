@@ -1,7 +1,7 @@
 {
   "name": "ChatGPT API Client",
   "description": "A module for interacting with the ChatGPT API",
-  "version": "1.0",
+  "version": "1.2",
   "manifest_version": 2,
   "homepage_url": "https://github.com/ChatGPT-Hackers/firefox-client",
   "background": {
@@ -9,7 +9,10 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://chat.openai.com/chat"],
+      "matches": [
+        "https://chat.openai.com/chat",
+        "https://chat.openai.com/chat/*"
+      ],
       "js": ["src/content.js"],
       "run_at": "document_end"
     },

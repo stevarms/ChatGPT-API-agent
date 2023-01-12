@@ -1,11 +1,7 @@
 # ChatGPT API Agent (Firefox version)
 
 # Setup
-1. `git clone https://github.com/ChatGPT-Hackers/ChatGPT-API-agent`
-2. Download firefox (if you don't already have it)
-3. Open `about:debugging#/runtime/this-firefox` in Firefox
-4. Click `Load Temporary Add-on`
-5. Drag and drop `manifest.json` from `ChatGPT-API-agent` into the popup and press `Select`
+1. Download from [Mozilla Addons](https://addons.mozilla.org/en-US/firefox/addon/chatgpt-api-client/)
 
 # Running
 1. Go to extension preferences
@@ -24,3 +20,34 @@ This will spawn the same number of tabs as there are emails/passwords
 8. After that, it will autofill the password and continue to the chat site.
 
 Done. It connects to the endpoint and you can leave it open.
+
+<br>
+<br>
+<br>
+
+# Firefox Docker (optional)
+
+```yaml
+version: '3.3'
+services:
+    firefox:
+        container_name: firefox
+        ports:
+            - '5800:5800'
+        volumes:
+            - '<host folder path>:/config:rw'
+        image: jlesage/firefox
+
+```
+1. create a folder that will contain the app data for firefox
+2. access container via `<ip-address>:5800` and finish the firefox setup
+3. procceed to follow <a href="#top">step 1</a> in Setup section
+4. now follow steps in <a href="#top">Running section</a> 
+
+# Contributing
+In order to develop locally you need to use guide provided by Mozilla: https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_first_WebExtension#trying_it_out and follow next steps:
+1. Clone this repository
+2. Go to `about:debugging` in Firefox
+3. Specify this directory as a temporary extension
+4. It will be loaded on top of the existing extension if you have one
+5. You can debug your new feature.
